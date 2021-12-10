@@ -4,3 +4,5 @@ Like the PS5 camera and E-con's Tara camera.
 
 Build and install the community version of [OpenVSLAM](https://github.com/OpenVSLAM-Community/openvslam) first.
 
+The tara-cpu-sdk project as a git submodule of this.
+
