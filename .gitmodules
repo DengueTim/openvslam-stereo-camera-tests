@@ -1,0 +1,4 @@
+[submodule "3rd/tara-cpu-sdk"]
+	path = 3rdParty/tara-cpu-sdk
+	url = https://github.com/econsystems/tara-cpu-sdk.git
+	branch = openvslam

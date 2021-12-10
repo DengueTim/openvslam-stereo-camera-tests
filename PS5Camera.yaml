@@ -1,0 +1,102 @@
+# EuRoC stereo model
+
+#==============#
+# Camera Model #
+#==============#
+
+# intrinsic parameters after stereo-rectification are written
+Camera:
+  name: "SonyPS5"
+  setup: "stereo"
+  model: "perspective"
+
+# new "rectified" matrices is the first three cols of the projection matrix which is calculated with cv::stereoRectify()
+# e.g. fx = P1[0][0] or P2[0][0], cx = P1[0][2] or P2[0][2]
+#      fy = P1[1][1] or P2[1][1], cy = P1[1][2] or P2[1][2]
+
+  fx: 1295.7048547724039
+  fy: 1295.7048547724039
+  cx: 653.68666076660156
+  cy: 425.84114837646484
+
+# there is no distortion after stereo rectification
+
+  k1: 0.0
+  k2: 0.0
+  p1: 0.0
+  p2: 0.0
+  k3: 0.0
+
+# focal_x_baseline is -P2[0][3] which is calculated with cv::stereoRectify()
+
+  fps: 15.0
+  cols: 1280
+  rows: 800
+  focal_x_baseline: 48.059659085017572
+
+  color_order: "RGB"
+
+#======================#
+# Stereo Rectification #
+#======================#
+
+# original intrinsic parameters (K, D) and stereo-recitification parameters (R)
+# matrices (K, R) are written in row-major order
+
+StereoRectifier:
+  K_left: [1.2651237334565162e+03, 0., 6.2860039066905836e+02, 0., 1.2630525873564320e+03, 4.2954754542969249e+02, 0., 0., 1.]
+  D_left: [7.6826181813464739e-03, -5.7737813849474670e-02, -1.3336068598585030e-03, -5.6949317746319335e-04, 6.0765451350855114e-02]
+  R_left: [9.9990058296552620e-01, 3.8750741102675317e-03, -1.3557580382970053e-02, -3.8994979989883925e-03, 9.9999082067629397e-01, -1.7755220381175424e-03, 1.3550575654068930e-02, 1.8282132785563856e-03, 9.9990651539814035e-01]
+  K_right: [1.2678304265143117e+03, 0., 6.4121989187313795e+02, 0., 1.2667023706603075e+03, 4.2405783070149494e+02, 0., 0., 1.]
+  D_right: [9.2508587861319276e-03, -8.8536976959019950e-02, -1.4327653983812430e-03, 1.0564847148563331e-03, 1.7736116433977622e-01]
+  R_right: [9.9994681159192511e-01, 3.5074704294845525e-03, -9.6990534759430879e-03, -3.4899876575954624e-03, 9.9999225583425000e-01, 1.8188616433737865e-03, 9.7053579682948102e-03, -1.7849153240970677e-03, 9.9995130886658323e-01]
+
+#=====================#
+# Tracking Parameters #
+#=====================#
+
+Tracking:
+  max_num_keypoints: 1000
+  ini_max_num_keypoints: 2000
+  depth_threshold: 40
+
+#================#
+# ORB Parameters #
+#================#
+
+Feature:
+  scale_factor: 1.2
+  num_levels: 8
+  ini_fast_threshold: 20
+  min_fast_threshold: 7
+
+#====================#
+# Mapping Parameters #
+#====================#
+
+Mapping:
+  baseline_dist_thr: 0.11007784219
+  redundant_obs_ratio_thr: 0.9
+
+#========================#
+# Initializer Parameters #
+#========================#
+
+Initializer:
+  num_min_triangulated_pts: 100
+
+#===========================#
+# PangolinViewer Parameters #
+#===========================#
+
+PangolinViewer:
+  keyframe_size: 0.07
+  keyframe_line_width: 1
+  graph_line_width: 1
+  point_size: 2
+  camera_size: 0.08
+  camera_line_width: 3
+  viewpoint_x: 0
+  viewpoint_y: -0.65
+  viewpoint_z: -1.9
+  viewpoint_f: 400
